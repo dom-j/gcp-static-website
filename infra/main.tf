@@ -87,6 +87,6 @@ resource "google_compute_global_forwarding_rule" "default" {
     load_balancing_scheme = "EXTERNAL"
     ip_address = google_compute_global_address.website_ip.address
     ip_protocol = "TCP"
-    port_range = "80"
+    port_range = "443"
     target = google_compute_target_http_proxy.website.self_link
 }

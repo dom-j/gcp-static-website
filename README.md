@@ -18,17 +18,17 @@ To use this project, you will need the following:
 
 ## Getting Started
 
-#### 1. To get started, clone the project repository to your local machine:
+### 1. To get started, clone the project repository to your local machine:
 
 `git clone https://github.com/dom-j/GCP-static-website.git`
 
 
-#### 2. Once you have cloned the repository, change directory to the project directory:
+### 2. Once you have cloned the repository, change directory to the project directory:
 
 `cd GCP-static-website`
 
 
-#### 3. Set up your Google Cloud Platform (GCP)
+### 3. Set up your Google Cloud Platform (GCP)
 
 Before you start configuring the project, you will need to set up your GCP account and create a project. To do this, follow these steps:
 
@@ -39,12 +39,12 @@ Before you start configuring the project, you will need to set up your GCP accou
 
 
 
-#### 4. Initialize the Terraform project:
+### 4. Initialize the Terraform project:
 
 `terraform init`
 
 
-#### 5. Configuring the Project
+### 5. Configuring the Project
 
 Before you can create the static website, you will need to configure the project. To do this, edit the main.tf file and provide the following values:
 
@@ -54,7 +54,7 @@ Before you can create the static website, you will need to configure the project
 
 
 
-#### 6. Creating the Static Website
+### 6. Creating the Static Website
 
 Once you have configured the project, you can create the static website by running the following command:
 
@@ -68,7 +68,7 @@ Terraform will then create the following resources:
 
 
 
-#### 7. Testing the Static Website
+### 7. Testing the Static Website
 
 Once the static website has been created, you can test it by visiting the following URL:
 
