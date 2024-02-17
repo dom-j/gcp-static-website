@@ -22,9 +22,11 @@ To use this project, you will need the following:
 
 `git clone https://github.com/dom-j/GCP-static-website.git`
 
+
 #### 2. Once you have cloned the repository, change directory to the project directory:
 
 `cd GCP-static-website`
+
 
 #### 3. Set up your Google Cloud Platform (GCP)
 
@@ -41,6 +43,7 @@ Before you start configuring the project, you will need to set up your GCP accou
 
 `terraform init`
 
+
 #### 5. Configuring the Project
 
 Before you can create the static website, you will need to configure the project. To do this, edit the main.tf file and provide the following values:
@@ -48,6 +51,7 @@ Before you can create the static website, you will need to configure the project
 * project_id - The ID of your Google Cloud Platform project
 * bucket_name - The name of the Cloud Storage bucket that you want to use for your static website
 * index_page - The name of the index page for your static website
+
 
 
 #### 6. Creating the Static Website
@@ -62,16 +66,10 @@ Terraform will then create the following resources:
 * An IAM policy binding that grants the storage.objectViewer role to the allUsers group
 * An HTTP load balancer
 
+
+
 #### 7. Testing the Static Website
 
 Once the static website has been created, you can test it by visiting the following URL:
 
 *TBC*
-
-#### Troubleshooting
-
-If you encounter any problems with this project, please refer to the following resources:
-
-* The Terraform documentation
-* The Google Cloud Platform documentation
-* The Google Cloud Platform support forums
