@@ -26,19 +26,20 @@ To use this project, you will need the following:
 
 `cd GCP-static-website`
 
-#### 3. Initialize the Terraform project:
-
-`terraform init`
-
-
-#### 4. Set up your Google Cloud Platform (GCP)
+#### 3. Set up your Google Cloud Platform (GCP)
 
 Before you start configuring the project, you will need to set up your GCP account and create a project. To do this, follow these steps:
 
 * Create a Google Cloud Platform (GCP) account by visiting https://cloud.google.com/
 * Create a new project
 * Create a service account for the project
+* DNS zone for the project
 
+
+
+#### 4. Initialize the Terraform project:
+
+`terraform init`
 
 #### 5. Configuring the Project
 
@@ -47,7 +48,7 @@ Before you can create the static website, you will need to configure the project
 * project_id - The ID of your Google Cloud Platform project
 * bucket_name - The name of the Cloud Storage bucket that you want to use for your static website
 * index_page - The name of the index page for your static website
-* error_page - The name of the error page for your static website
+
 
 #### 6. Creating the Static Website
 
@@ -65,7 +66,7 @@ Terraform will then create the following resources:
 
 Once the static website has been created, you can test it by visiting the following URL:
 
-https://www.example.com
+*TBC*
 
 #### Troubleshooting
 
