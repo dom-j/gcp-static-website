@@ -72,4 +72,4 @@ Terraform will then create the following resources:
 
 Once the static website has been created, you can test it by visiting the following URL:
 
-*TBC*
+https://website.gcp.domssocial.co.uk/index.html
