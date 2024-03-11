@@ -72,4 +72,4 @@ Terraform will then create the following resources:
 
 Once the static website has been created, you can test it by visiting the following URL:
 
-www.domssocial.co.uk
+<www.domssocial.co.uk>

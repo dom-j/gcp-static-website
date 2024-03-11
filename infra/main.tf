@@ -20,6 +20,35 @@ resource "google_storage_bucket_object" "static_website_src" {
     bucket = google_storage_bucket.website.name
 }
 
+#Create the images object in the Bucket
+resource "google_storage_bucket_object" "images" {
+  name = "images/"
+  bucket = google_storage_bucket.website.name
+  content = " "
+}
+
+#Upload all the files from the images folder
+resource "google_storage_bucket_object" "images-files" {
+  for_each = fileset("website/","images/*.jpg")
+  name         = each.key  
+  bucket       = google_storage_bucket.website.name  
+  source       = each.key
+}
+
+
+
+
+#Create a trigger for the local_exec command
+#resource "null_resource" "upload_folder" {
+#    triggers = {
+#      source_files = google_storage_bucket_object.source_files.*.source
+#    }
+#Upload the assets folder to my storage bucket
+#     provisioner "local-exec" {
+#        command = "gsutil -m cp ../website/assets/* gs://${google_storage_bucket.website.name}"
+#   }  
+#}
+
 #Reserve a static external IP address
 resource "google_compute_global_address" "website_ip" {
     name = "website-lb-ip"
