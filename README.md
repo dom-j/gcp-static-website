@@ -19,12 +19,14 @@ And the Cloud CDN is used to cache the website content and improve performance.
 * [The Terraform CLI](https://developer.hashicorp.com/terraform/install)
 * A text editor like [Visual Studio Code](https://code.visualstudio.com/download)
 
-### 1.🌀To get started, clone the project repository to your local machine and change directory to the project directory:
+### 1.🌀To get started, clone the project repository to your local machine and change directory to the project directory
 
-```git clone https://github.com/dom-j/GCP-static-website.git
+```
+git clone https://github.com/dom-j/GCP-static-website.git
 ```
 
-```cd GCP-static-website
+```
+cd GCP-static-website
 ```
 
 ### 2. Set up your Google Cloud Platform (GCP)
@@ -38,9 +40,10 @@ Before you start configuring the project, you will need to set up your GCP accou
 * You will also need to register a domain name and configure it to use Google Cloud DNS - I used <https://domains.squarespace.com/> to register my domain, however you can use any domain registrar.
 * In GCP you will need to enable some API services like IAM Service Account Credentials API, Cloud DNS API...etc
 
-### 3. Initialize the Terraform project:
+### 3. Initialize the Terraform project
 
-```terraform init
+```
+terraform init
 ```
 
 ### 4.Configuring the Project💻
@@ -51,7 +54,6 @@ I created 3 Terraform .tf files to configure the project:
 * `variables.tf` - This file contains the input variables for the project, including the project ID, the bucket name, and the index page.
 * `provider.tf` - This file contains the provider configuration for Google Cloud Platform.
 
-
 ### 5. Download and add your JSON key file to the project
 
 The service account key file is used to authenticate Terraform to your GCP account. You can create a service account and download the key file by following the instructions in the [GCP documentation](https://cloud.google.com/iam/docs/creating-managing-service-account-keys).
@@ -60,12 +62,14 @@ The service account key file is used to authenticate Terraform to your GCP accou
 
 Once you have configured the project, you can upload the Terraform configuration to Google Cloud Platform by running the following command:
 
-```terraform plan
+```
+terraform plan
 ```
 
 To check the changes that will be made to your infrastructure.
 
-```terraform apply
+```
+terraform apply
 ```
 
 When prompted, review the changes and type `yes` to confirm that you want to apply the changes.
@@ -84,7 +88,7 @@ Once the static website has been created, you can test it by visiting the follow
 
 ### How it works🧮
 
-    When a user visits the website, the following steps occur:
+    When a user visits the website, the following steps occur
 
     1. Cloud DNS: The user enters your domain name in their browser. Cloud DNS  translates the domain name to the IP address of the Cloud CDN edge location closest to the user.
     2.Cloud CDN Caching: The user's browser connects to the nearest Cloud CDN edge location.  Cloud CDN checks its cache for the requested content (static files like images, HTML, CSS, JavaScript).
