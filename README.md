@@ -23,7 +23,9 @@ And the Cloud CDN is used to cache the website content and improve performance.
 
 ```git clone https://github.com/dom-j/GCP-static-website.git```
 
-```cd GCP-static-website```
+```
+cd GCP-static-website
+```
 
 ### 2. Set up your Google Cloud Platform (GCP)
 
