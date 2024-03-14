@@ -100,7 +100,7 @@ Once the static website has been created, you can test it by visiting the follow
 
 The frontend of the website is a HTML, CSS and JS files. I downloaded the template from <https://html5up.net/>, and modified it to suit my needs.
 
-What have I learned from this project?
+### What have I learned from this project?
 
     1. How to use Terraform to create infrastructure on Google Cloud Platform
     2. How to create a static website on Google Cloud Platform
