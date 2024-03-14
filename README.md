@@ -21,10 +21,10 @@ And the Cloud CDN is used to cache the website content and improve performance.
 
 ### 1.🌀To get started, clone the project repository to your local machine and change directory to the project directory:
 
-```git clone https://github.com/dom-j/GCP-static-website.git```
-
+```git clone https://github.com/dom-j/GCP-static-website.git
 ```
-cd GCP-static-website
+
+```cd GCP-static-website
 ```
 
 ### 2. Set up your Google Cloud Platform (GCP)
@@ -40,7 +40,8 @@ Before you start configuring the project, you will need to set up your GCP accou
 
 ### 3. Initialize the Terraform project:
 
-```terraform init```
+```terraform init
+```
 
 ### 4.Configuring the Project💻
 
@@ -59,11 +60,13 @@ The service account key file is used to authenticate Terraform to your GCP accou
 
 Once you have configured the project, you can upload the Terraform configuration to Google Cloud Platform by running the following command:
 
-```terraform plan```
+```terraform plan
+```
 
 To check the changes that will be made to your infrastructure.
 
-```terraform apply```
+```terraform apply
+```
 
 When prompted, review the changes and type `yes` to confirm that you want to apply the changes.
 
