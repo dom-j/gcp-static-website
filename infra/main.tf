@@ -4,15 +4,6 @@ resource "google_storage_bucket" "website" {
     location = "europe-west2"
 }
 
-# Make new object public
-resource "google_storage_object_access_control" "public_rule" {
-    object = google_storage_bucket_object.static_website_src.name
-    bucket = google_storage_bucket.website.name
-    role = "READER"
-    entity = "allUsers"
-}
-
-
 #Upload the html file to the bucket
 resource "google_storage_bucket_object" "static_website_src" {
     name = "index.html"
@@ -20,7 +11,7 @@ resource "google_storage_bucket_object" "static_website_src" {
     bucket = google_storage_bucket.website.name
 }
 
-#Create the images object in the Bucket
+#Create the images folder in the Bucket
 resource "google_storage_bucket_object" "images" {
   name = "images/"
   bucket = google_storage_bucket.website.name
@@ -29,25 +20,75 @@ resource "google_storage_bucket_object" "images" {
 
 #Upload all the files from the images folder
 resource "google_storage_bucket_object" "images-files" {
-  for_each = fileset("website/","images/*.jpg")
-  name         = each.key  
-  bucket       = google_storage_bucket.website.name  
-  source       = each.key
+  for_each = fileset("../website/images/","*.jpg")
+  bucket       = google_storage_bucket.website.name 
+  name         = "images/${basename(each.key)}"
+  source       = "../website/images/${basename(each.key)}"
 }
 
+#Create the assets folder in the bucket
+resource "google_storage_bucket_object" "assets" {
+  name = "assets/"
+  bucket = google_storage_bucket.website.name
+  content = " "
+}
 
+#Upload all the fwebfonts from the assets folder
+resource "google_storage_bucket_object" "assets-files" {
+  for_each = fileset("../website/assets/webfonts","**")
+  bucket = google_storage_bucket.website.name
+  name = "assets/webfonts/${basename(each.key)}"
+  source = "../website/assets/webfonts/${basename(each.key)}"
+}
 
+#Upload the js files from the assets folder
+resource "google_storage_bucket_object" "js-files" {
+  for_each = fileset("../website/assets/js","**")
+  bucket = google_storage_bucket.website.name
+  name = "assets/js/${basename(each.key)}"
+  source = "../website/assets/js/${basename(each.key)}"
+}
 
-#Create a trigger for the local_exec command
-#resource "null_resource" "upload_folder" {
-#    triggers = {
-#      source_files = google_storage_bucket_object.source_files.*.source
-#    }
-#Upload the assets folder to my storage bucket
-#     provisioner "local-exec" {
-#        command = "gsutil -m cp ../website/assets/* gs://${google_storage_bucket.website.name}"
-#   }  
-#}
+#Upload the css folder's files mian and fontawesome-all
+resource "google_storage_bucket_object" "css-files" {
+  for_each = fileset("../website/assets/css","*")
+  bucket = google_storage_bucket.website.name
+  name = "assets/css/${basename(each.key)}"
+  source = "../website/assets/css/${basename(each.key)}"
+}
+
+#Upload the css-images folder's content
+resource "google_storage_bucket_object" "css-images-files" {
+  for_each = fileset("../website/assets/css/images","*")
+  bucket = google_storage_bucket.website.name
+  name = "assets/css/images/${basename(each.key)}"
+  source = "../website/assets/css/images/${basename(each.key)}"
+}
+
+#Upload the sass folder's content mian file
+resource "google_storage_bucket_object" "sass-files" {
+  for_each = fileset("../website/assets/sass","*")
+  bucket = google_storage_bucket.website.name
+  name = "assets/sass/${basename(each.key)}"
+  source = "../website/assets/sass/${basename(each.key)}"
+}
+
+#Upload the sass-libs folder's content
+resource "google_storage_bucket_object" "sass-libs-files" {
+  for_each = fileset("../website/assets/sass/libs","*")
+  bucket = google_storage_bucket.website.name
+  name = "assets/sass/libs/${basename(each.key)}"
+  source = "../website/assets/sass/libs/${basename(each.key)}"
+}
+
+# Make new object public
+resource "google_storage_bucket_iam_member" "public_rule" {
+    provider = google
+    bucket = google_storage_bucket.website.name
+    role = "roles/storage.objectViewer"
+    member = "allUsers"
+}
+
 
 #Reserve a static external IP address
 resource "google_compute_global_address" "website_ip" {
