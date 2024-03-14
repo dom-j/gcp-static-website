@@ -15,7 +15,7 @@ And the Cloud CDN is used to cache the website content and improve performance.
 
 ☝Pre-requisites:
 
-* A [Google Cloud Platform](https://cloud.google.com/?hl=en) accout and a project
+* A [Google Cloud Platform](https://cloud.google.com/?hl=en) account and a project
 * [The Terraform CLI](https://developer.hashicorp.com/terraform/install)
 * A text editor like [Visual Studio Code](https://code.visualstudio.com/download)
 
@@ -29,12 +29,12 @@ And the Cloud CDN is used to cache the website content and improve performance.
 
 Before you start configuring the project, you will need to set up your GCP account and create a project.
 
-* Create a [Google Cloud Platform (GCP)](https://cloud.google.com/) account by visiting
+* Create a [Google Cloud Platform (GCP)](https://cloud.google.com/) account
 * Create a new project
 * Create a service account for the project
 * DNS zone for the project
 * You will also need to register a domain name and configure it to use Google Cloud DNS - I used <https://domains.squarespace.com/> to register my domain, however you can use any domain registrar.
-* You will need to enable some API services like IAM Service Account Credentials API, Cloud DNS API...etc
+* In GCP you will need to enable some API services like IAM Service Account Credentials API, Cloud DNS API...etc
 
 ### 3. Initialize the Terraform project:
 
