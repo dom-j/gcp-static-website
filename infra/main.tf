@@ -11,7 +11,7 @@ resource "google_storage_bucket_object" "static_website_src" {
     bucket = google_storage_bucket.website.name
 }
 
-#Create the images folder in the Bucket
+#reate the images folder in the Bucket
 resource "google_storage_bucket_object" "images" {
   name = "images/"
   bucket = google_storage_bucket.website.name
@@ -89,7 +89,6 @@ resource "google_storage_bucket_iam_member" "public_rule" {
     member = "allUsers"
 }
 
-
 #Reserve a static external IP address
 resource "google_compute_global_address" "website_ip" {
     name = "website-lb-ip"
@@ -139,8 +138,8 @@ resource "google_compute_url_map" "website" {
         name = "allpaths"
         default_service = google_compute_backend_bucket.website-backend.self_link
     }
+    
 }
-
 #GCP HTTPS Proxy
 
 resource "google_compute_target_https_proxy" "website" {
