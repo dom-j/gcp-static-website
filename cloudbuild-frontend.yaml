@@ -1,0 +1,37 @@
+steps:
+# Step 1: Checkout the code from GitHub 
+ - name: 'gcr.io/cloud-builders/git' 
+   args: ['clone','https://github.com/dom-j/GCP-static-website.git','GC-static-website',]
+  
+# Step 2: Install Terraform
+ - name: 'hashicorp/terraform:1.7.3'
+   entrypoint: 'sh'
+   args: ['-c', 'wget https://releases.hashicorp.com/terraform/1.7.3/terraform_1.7.3_linux_amd64.zip && unzip terraform_1.7.3_linux_amd64.zip && mv terraform /workspace/terraform && chmod +x /workspace/terraform']
+
+# Step 3 Initialize Terraform
+ - name: 'hashicorp/terraform:1.7.3'
+   entrypoint: 'sh'
+   args: ['-c', 'cd /workspace/GCP-static-website/infra && /workspace/terraform init']
+
+#Step 4: Format Terraform configuration
+ - name: 'hashicorp/terraform:1.7.3'
+   entrypoint: 'sh'
+   args: ['-c', 'cd /workspace/GCP-static-website/infra && /workspace/terraform fmt']
+
+# Step 5: Create Terraform plan
+ - name: 'hashicorp/terraform:1.7.3'
+   entrypoint: 'sh'
+   args: ['-c', 'cd /workspace/GCP-static-website/infra && /workspace/terraform plan -out=plan']
+
+# Step 6: Apply Terraform configuration
+ - name: 'hashicorp/terraform:1.7.3'
+   entrypoint: 'sh'
+   args: ['-c', 'cd /workspace/GCP-static-website/infra && /workspace/terraform apply -auto-approve']
+
+# Step 7: Copy the static website file to GCS
+ - name: 'gcr.io/cloud-builders/gsutil'
+   args: ['cp','-r','/workspace/GCP-static-website/websit/*','gs://website-by-dom-j']
+
+# Step 8: Set the website configuration for the GCS bucket
+ - name: 'gcr.io/cloud-builders/gsutil'
+   args: ['web','set', '-m','index.html', '-e', '404.html','gs://website-by-dom-j']
