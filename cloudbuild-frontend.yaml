@@ -1,14 +1,14 @@
-secrets:
-  - secretManager:
-      secretVersionName: projects/static-website-413510/secrets/gcp_svc_key/versions/latest
-      env: 'TF_VAR_gcp_svc_key'
-  - secretManager:
-      secretVersionName: projects/static-website-413510/secrets/gcp_project/versions/latest
-      env: 'TF_VAR_gcp_project'
-  - secretManager:
-      secretVersionName: projects/static-website-413510/secrets/gcp_region/versions/latest
-      env: 'TF_VAR_gcp_region'
+substitutions:
+  _TF_VAR_gcp_svc_key: projects/static-website-413510/secrets/gcp_svc_key/versions/latest
+  _TF_VAR_gcp_project: projects/static-website-413510/secrets/gcp_project/versions/latest
+  _TF_VAR_gcp_region: projects/static-website-413510/secrets/gcp_region/versions/latest
 
+secrets:
+- secretManager:
+    secretEnv:
+      TF_VAR_gcp_svc_key: $_TF_VAR_gcp_svc_key
+      TF_VAR_gcp_project: $_TF_VAR_gcp_project
+      TF_VAR_gcp_region: $_TF_VAR_gcp_region
 
 steps:
 # Step 1: Checkout the code from GitHub 
@@ -34,13 +34,13 @@ steps:
  - name: 'hashicorp/terraform:1.7.3'
    entrypoint: 'sh'
    args: ['-c', 'cd /workspace/GCP-static-website/infra && /workspace/terraform plan -out=plan']
-   secretEnv: ['TF_VAR_gcp_svc_key', 'TF_VAR_gcp_project', 'TF_VAR_gcp_region']
+  
 
 # Step 6: Apply Terraform configuration
  - name: 'hashicorp/terraform:1.7.3'
    entrypoint: 'sh'
    args: ['-c', 'cd /workspace/GCP-static-website/infra && /workspace/terraform apply -auto-approve']
-   secretEnv: ['TF_VAR_gcp_svc_key', 'TF_VAR_gcp_project', 'TF_VAR_gcp_region']
+   
 
 # Step 7: Copy the static website file to GCS
  - name: 'gcr.io/cloud-builders/gsutil'
