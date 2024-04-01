@@ -21,12 +21,12 @@ steps:
 # Step 5: Create Terraform plan
  - name: 'hashicorp/terraform:1.7.3'
    entrypoint: 'sh'
-   args: ['-c', 'cd /workspace/GCP-static-website/infra && /workspace/terraform plan -out=plan']
+   args: ['-c', 'cd /workspace/GCP-static-website/infra && /workspace/terraform plan -out=plan -var-file=terraform.tfvars']
 
 # Step 6: Apply Terraform configuration
  - name: 'hashicorp/terraform:1.7.3'
    entrypoint: 'sh'
-   args: ['-c', 'cd /workspace/GCP-static-website/infra && /workspace/terraform apply -auto-approve']
+   args: ['-c', 'cd /workspace/GCP-static-website/infra && /workspace/terraform apply -auto-approve -var-file=terraform.tfvars']
 
 # Step 7: Copy the static website file to GCS
  - name: 'gcr.io/cloud-builders/gsutil'
