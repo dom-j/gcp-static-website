@@ -1,3 +1,4 @@
+steps:
 # Step 1: Checkout the code from GitHub 
  - name: 'gcr.io/cloud-builders/git' 
    args: ['clone','https://github.com/dom-j/GCP-static-website.git','GCP-static-website',]
