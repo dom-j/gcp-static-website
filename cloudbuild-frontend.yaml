@@ -1,7 +1,7 @@
 steps:
 # Step 1: Checkout the code from GitHub 
  - name: 'gcr.io/cloud-builders/git' 
-   args: ['clone','https://github.com/dom-j/GCP-static-website.git','GC-static-website',]
+   args: ['clone','https://github.com/dom-j/GCP-static-website.git','GCP-static-website',]
   
 # Step 2: Install Terraform
  - name: 'hashicorp/terraform:1.7.3'
