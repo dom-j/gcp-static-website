@@ -16,7 +16,7 @@ steps:
 #Step 4: Format Terraform configuration
  - name: 'hashicorp/terraform:1.7.3'
    entrypoint: 'sh'
-   args: ['-c', 'cd /workspace/GCP-static-website/infra && /workspace/terraform fmt']
+   args: ['-c', 'cd /workspace/GCP-static-website/infra && /workspace/terraform fmt -var-file=terraform.tfvars']
 
 # Step 5: Create Terraform plan
  - name: 'hashicorp/terraform:1.7.3'
