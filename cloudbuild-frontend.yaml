@@ -24,7 +24,7 @@ steps:
    args: ['-c', 'cd /workspace/GCP-static-website/infra && /workspace/terraform plan -out=plan']
    secretEnv: ['gcp_svc_key','gcp_project', 'gcp_region']
    availableSecrets:
-    secretManager:
+     secretManager:
      - versionName: projects/static-website-413510/secrets/gcp_svc_key/versions/1
        env: 'gcp_svc_key'
      - versionName: projects/static-website-413510/secrets/gcp_project/versions/1
@@ -38,7 +38,7 @@ steps:
    args: ['-c', 'cd /workspace/GCP-static-website/infra && /workspace/terraform apply -auto-approve']
    secretEnv: ['gcp_svc_key','gcp_project', 'gcp_region']
    availableSecrets:
-    secretManager:
+     secretManager:
      - versionName: projects/static-website-413510/secrets/gcp_svc_key/versions/1
        env: 'gcp_svc_key'
      - versionName: projects/static-website-413510/secrets/gcp_project/versions/1
