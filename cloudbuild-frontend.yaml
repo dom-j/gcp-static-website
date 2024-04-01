@@ -4,7 +4,6 @@ substitutions:
   _TF_VAR_gcp_region: projects/static-website-413510/secrets/gcp_region/versions/latest
 
 secrets:
-- secretManager:
     secretEnv:
       TF_VAR_gcp_svc_key: $_TF_VAR_gcp_svc_key
       TF_VAR_gcp_project: $_TF_VAR_gcp_project
