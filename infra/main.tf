@@ -1,13 +1,6 @@
 
-
-# Check if the bucket already exists
-data "google_storage_bucket" "existing"{
-  name = "website-by-dom-j"
-}
-
-#Create the bucket if it does not exist
+#Create the bucket 
 resource "google_storage_bucket" "website" {
-    count = data.google_storage_bucket.existing.name == "website-by-dom-j" ? 0 : 1
     name = "website-by-dom-j"
     location = "europe-west2"
 }
@@ -97,14 +90,8 @@ resource "google_storage_bucket_iam_member" "public_rule" {
     member = "allUsers"
 }
 
-#Check if the global address already exists
-data "google_compute_global_address" "existing"{
-  name = "website-lb-ip"
-} 
-
 #Reserve a static external IP address if it does not exist
 resource "google_compute_global_address" "website_ip" {
-  count = data.google_compute_global_address.existing.name == "website-lb-ip" ? 0 : 1
     name = "website-lb-ip"
 }
 
