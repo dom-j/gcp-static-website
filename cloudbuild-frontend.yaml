@@ -21,14 +21,14 @@ steps:
 # Step 5: Create Terraform plan
  - name: 'hashicorp/terraform:1.7.3'
    entrypoint: 'sh'
-   args: ['-c', 'cd /workspace/GCP-static-website/infra && /workspace/terraform plan -out=plan']
+   args: ['-c', 'cd /workspace/GCP-static-website/infra && /workspace/terraform plan -out=plan -var="gcp_svc_key=${gcp_svc_key}" -var="gcp_project=${gcp_project}" -var="gcp_region=${gcp_region}"']
    secretEnv: ['gcp_svc_key','gcp_project', 'gcp_region']
    
 
 # Step 6: Apply Terraform configuration
  - name: 'hashicorp/terraform:1.7.3'
    entrypoint: 'sh'
-   args: ['-c', 'cd /workspace/GCP-static-website/infra && /workspace/terraform apply -auto-approve']
+   args: ['-c', 'cd /workspace/GCP-static-website/infra && /workspace/terraform apply -auto-approve -var="gcp_svc_key=${gcp_svc_key}" -var="gcp_project=${gcp_project}" -var="gcp_region=${gcp_region}"']
    secretEnv: ['gcp_svc_key','gcp_project', 'gcp_region']
    
    
