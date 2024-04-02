@@ -23,30 +23,15 @@ steps:
    entrypoint: 'sh'
    args: ['-c', 'cd /workspace/GCP-static-website/infra && /workspace/terraform plan -out=plan']
    secretEnv: ['gcp_svc_key','gcp_project', 'gcp_region']
-   availableSecrets:
-     secretManager:
-     - versionName: projects/static-website-413510/secrets/gcp_svc_key/versions/1
-       env: 'gcp_svc_key'
-     - versionName: projects/static-website-413510/secrets/gcp_project/versions/1
-       env: 'gcp_project'
-     - versionName: projects/static-website-413510/secrets/gcp_region/versions/1
-       env: 'gcp_region'
+   
 
 # Step 6: Apply Terraform configuration
  - name: 'hashicorp/terraform:1.7.3'
    entrypoint: 'sh'
    args: ['-c', 'cd /workspace/GCP-static-website/infra && /workspace/terraform apply -auto-approve']
    secretEnv: ['gcp_svc_key','gcp_project', 'gcp_region']
-   availableSecrets:
-     secretManager:
-     - versionName: projects/static-website-413510/secrets/gcp_svc_key/versions/1
-       env: 'gcp_svc_key'
-     - versionName: projects/static-website-413510/secrets/gcp_project/versions/1
-       env: 'gcp_project'
-     - versionName: projects/static-website-413510/secrets/gcp_region/versions/1
-       env: 'gcp_region'
    
-
+   
 # Step 7: Copy the static website file to GCS
  - name: 'gcr.io/cloud-builders/gsutil'
    args: ['cp','-r','/workspace/GCP-static-website/website/*','gs://website-by-dom-j']
@@ -54,3 +39,12 @@ steps:
 # Step 8: Set the website configuration for the GCS bucket
  - name: 'gcr.io/cloud-builders/gsutil'
    args: ['web','set', '-m','index.html', '-e', '404.html','gs://website-by-dom-j']
+
+availableSecrets:
+  secretManager:
+  - versionName: projects/static-website-413510/secrets/gcp_svc_key/versions/latest
+    env: 'gcp_svc_key'
+  - versionName: projects/static-website-413510/secrets/gcp_project/versions/latest
+    env: 'gcp_project'
+  - versionName: projects/static-website-413510/secrets/gcp_region/versions/
+    env: 'gcp_region'
