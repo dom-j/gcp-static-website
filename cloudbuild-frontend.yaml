@@ -46,5 +46,5 @@ availableSecrets:
     env: 'gcp_svc_key'
   - versionName: projects/static-website-413510/secrets/gcp_project/versions/latest
     env: 'gcp_project'
-  - versionName: projects/static-website-413510/secrets/gcp_region/versions/
+  - versionName: projects/static-website-413510/secrets/gcp_region/versions/latest
     env: 'gcp_region'
