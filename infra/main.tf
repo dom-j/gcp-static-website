@@ -160,3 +160,11 @@ resource "google_compute_global_forwarding_rule" "default" {
     port_range = "443"
     target = google_compute_target_https_proxy.website.self_link
 }
+
+#Terraform backend configuration
+terraform {
+  backend "gcs" {
+    bucket = "state-file-website"
+    prefix = "terraform.tfstate"
+  }
+}
