@@ -1,4 +1,3 @@
-
 #Create the bucket 
 resource "google_storage_bucket" "website" {
     name = "website-by-dom-j"
@@ -159,12 +158,4 @@ resource "google_compute_global_forwarding_rule" "default" {
     ip_protocol = "TCP"
     port_range = "443"
     target = google_compute_target_https_proxy.website.self_link
-}
-
-#Terraform backend configuration
-terraform {
-  backend "gcs" {
-    bucket = "state-file-website"
-    prefix = "terraform.tfstate"
-  }
 }
