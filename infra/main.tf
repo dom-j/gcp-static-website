@@ -1,10 +1,4 @@
-#Terraform backend configuration
-terraform {
-  backend "gcs" {
-    bucket = "state-file-website"
-    prefix = "terraform/state"
-  }
-}
+
 
 #Create the bucket 
 resource "google_storage_bucket" "website" {
