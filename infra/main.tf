@@ -1,4 +1,20 @@
+#Terraform backend configuration
+terraform {
+  backend "gcs" {
+    bucket = "state-file-website"
+    prefix = "terraform/state"
+  }
+}
 
+#Create the bucket for the state_file
+resource "google_storage_bucket" "state_file_website" {
+    name = "state-file-website"
+    location = "europe-west2"
+
+    versioning {
+        enabled = true
+    }
+}
 
 #Create the bucket 
 resource "google_storage_bucket" "website" {
