@@ -41,6 +41,13 @@ blockquote, q {
 	quotes: none;
 }
 
+#animated-text {
+    color: white; /* Change the color to tomato */
+    font-weight: bold; /* Make the text bold */
+    font-size: 1.5em; /* Increase the size of the text */
+    text-shadow: 2px 2px 4px #000000; /* Add a shadow to the text */
+}
+
 	blockquote:before, blockquote:after, q:before, q:after {
 		content: '';
 		content: none;
