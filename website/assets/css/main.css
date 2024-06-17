@@ -42,10 +42,10 @@ blockquote, q {
 }
 
 #animated-text {
-    color: #3E602F; /* Change the color to tomato */
+    color: #444444; /* Change the color to tomato */
     font-weight: bold; /* Make the text bold */
     font-size: 1.5em; /* Increase the size of the text */
-    text-shadow: 2px 2px 4px #000000; /* Add a shadow to the text */
+    text-shadow: 2px 2px 4px #FFFFFF; /* Add a shadow to the text */
 }
 
 	blockquote:before, blockquote:after, q:before, q:after {
