@@ -57,7 +57,7 @@
 						<div class="container">
 
 							<header>
-								<h2 class="alt"><strong>Cloud by DominikJ Jaro</strong></h2>
+								<h2 class="alt"><strong>Cloud by Dominik Jaro</strong></h2>
 								<p id="animated-text" class="line"></p>
 								Applying Knowledge to <a href="#portfolio" class= "scrolly">Real Projects</a><br />
 							     <a href="#about" class="scrolly">About Me</a></p>
@@ -157,9 +157,9 @@
 					'Expertise in Google Cloud Platform',
 					'I help clients deploy and integrate applications and tools seamlessly',
 				];
-				var typingDelay = 200;
-				var newTextDelay = 200;
-				var newTextDelay = 2000; //Delay between current and next text
+				var typingDelay = 100;
+				var newTextDelay = 100;
+				var newTextDelay = 200; //Delay between current and next text
 				var textArrayIndex = 0;
 				var charIndex = 0;
 
@@ -185,11 +185,12 @@
 						if (textArrayIndex >= textArray.length) textArrayIndex = 0;
 						setTimeout(type, typingDelay + 1100);
 					}
-
-					document.addEventListener('DOMContentLoaded', function() { //On DOM Load initiate the effect
-						if(textArray.length) setTimeout(type, newTextDelay + 250);
-					});
 				}
+         
+				document.addEventListener('DOMContentLoaded', function() { //On DOM Load initiate the effect
+					if(textArray.length) setTimeout(type, newTextDelay + 250);
+				});
+				
 			</script>
 
 	</body>
