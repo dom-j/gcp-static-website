@@ -5,7 +5,7 @@ steps:
 
 # Step 2: Copy the updated index.html to GCS
  - name: 'gcr.io/cloud-builders/gsutil'
-   args: ['cp','-r','/workspace/GCP-static-website/website/index.html','gs://website-by-dom-j']
+   args: ['cp','-r','/workspace/GCP-static-website/website/*','gs://website-by-dom-j']
 
 # Step 3: Set the website configuration for the GCS bucket
  - name: 'gcr.io/cloud-builders/gsutil'

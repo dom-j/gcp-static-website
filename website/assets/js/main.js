@@ -140,4 +140,27 @@
 	}
  // The end of the button 
 
+ // This is the code for the interactive lines
+ let currentLine = 0;
+const lines = document.querySelectorAll('.line');
+
+function showNextLine() {
+  // Hide the current line
+  if (currentLine > 0) {
+    lines[currentLine - 1].style.display = 'none';
+  }
+
+  // Show the next line
+  lines[currentLine].style.display = 'block';
+
+  // Increment the current line
+  currentLine = (currentLine + 1) % lines.length;
+}
+
+// Show the first line immediately
+showNextLine();
+
+// Then show each subsequent line every 3 seconds
+setInterval(showNextLine, 3000);
+
 })(jQuery);
