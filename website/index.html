@@ -58,9 +58,7 @@
 
 							<header>
 								<h2 class="alt"><strong>Cloud by DominikJ Jaro</strong></h2>
-								<p id="line1" class="line"><strong>Passionate about Cloud Technology</strong></p>
-                                <p id="line2" class="line"><strong>Expertise in Google Cloud Platform</strong></p>
-                                <p id="line3" class="line"><strong>I help you deploy and integrate</strong></p>
+								<p id="animated-text" class="line"></p>
 								Applying Knowledge to <a href="#portfolio" class= "scrolly">Real Projects</a><br />
 							     <a href="#about" class="scrolly">About Me</a></p>
 							</header>
@@ -153,6 +151,46 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			<script>
+				var textArray = [
+                    'Passionate about Cloud Technology',
+					'Expertise in Google Cloud Platform',
+					'I help clients deploy and integrate applications and tools seamlessly',
+				];
+				var typingDelay = 200;
+				var newTextDelay = 200;
+				var newTextDelay = 2000; //Delay between current and next text
+				var textArrayIndex = 0;
+				var charIndex = 0;
+
+				function type() {
+					if (charIndex < textArray[textArrayIndex].length) {
+						document.getElementById("animated-text").textContent += textArray[textArrayIndex].charAt(charIndex);
+						charIndex++;
+						setTimeout(type, typingDelay);
+					}
+					else {
+						setTimeout(erase, newTextDelay);
+					}
+					}
+
+				function erase() {
+					if (charIndex > 0) {
+						document.getElementById("animated-text").textContent = textArray[textArrayIndex].substring(0, charIndex-1);
+						charIndex--;
+						setTimeout(erase, erasingDelay);
+					}
+					else {
+						textArrayIndex++;
+						if (textArrayIndex >= textArray.length) textArrayIndex = 0;
+						setTimeout(type, typingDelay + 1100);
+					}
+
+					document.addEventListener('DOMContentLoaded', function() { //On DOM Load initiate the effect
+						if(textArray.length) setTimeout(type, newTextDelay + 250);
+					});
+				}
+			</script>
 
 	</body>
 </html>
